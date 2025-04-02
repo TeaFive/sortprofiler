@@ -26,7 +26,10 @@ void runAllSortingAlgorithms(const vector<int>& myVector)
     insertionSort(dummy);
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
 
-
+    dummy = myVector;
+    cout << "Running " << setw(20) << "SELECTION SORT...";
+    selectionSort(dummy);
+    cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
 }
 
 // Early exit implementation
@@ -93,9 +96,27 @@ void radixSort(vector<int>& myVector)
 }
 
 // TODO
-void selectionSort(vector<int>& v)
+void selectionSort(vector<int>& myVector)
 {
+    int length = (int)(myVector.size());
 
+    for (int i = 0; i < length - 1; ++i)
+    {
+        int localMin = i;
+
+        for (int j = i + 1; j < length; ++j)
+        {
+            if (myVector[j] < myVector[localMin])
+            {
+                localMin = j;
+            }
+        }
+
+        if (localMin != i)
+        {
+            swap(myVector[i], myVector[localMin]);
+        }
+    }
 }
 
 void stlSort(vector<int>& myVector)
