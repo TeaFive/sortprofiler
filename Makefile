@@ -23,7 +23,7 @@ create_temp:
 
 # Build executable
 $(TARGET): $(SRC) $(HDR)
-	TMP=./temp TEMP=./temp TMPDIR=./temp $(CXX) $(CXXFLAGS) -o $@ $(SRC)
+	TMP=./temp TEMP=./temp TMPDIR=./temp $(CXX) $(CXXFLAGS) -o $(TARGET) $(SRC)
 
 # Clean up build artifacts
 clean:

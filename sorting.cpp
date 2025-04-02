@@ -10,9 +10,23 @@ void printVector(const vector<int>& myVector)
     cout << "\n";
 }
 
-void runAllSorts(const vector<int>& v)
+void runAllSortingAlgorithms(const vector<int>& myVector)
 {
-    
+    // TO ADD: Time implementation
+    // Look at <chrono>
+    // https://cplusplus.com/reference/chrono/high_resolution_clock/now/
+
+    vector<int> dummy = myVector;
+    cout << "Running " << setw(20) << "BUBBLE SORT...";
+    bubbleSort(dummy);
+    cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
+
+    dummy = myVector;
+    cout << "Running " << setw(20) << "INSERTION SORT...";
+    insertionSort(dummy);
+    cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
+
+
 }
 
 // Early exit implementation
@@ -43,7 +57,21 @@ void bubbleSort(vector<int>& myVector)
 
 void insertionSort(vector<int>& myVector)
 {
+    int length = (int)(myVector.size());
 
+    for (int i = 0; i < length; ++i)
+    {
+        int j = i;
+
+        while ((j > 0) && (myVector[j - 1] > myVector[j]))
+        {
+            int temp = myVector[j];
+            myVector[j] = myVector[j - 1];
+            myVector[j - 1] = temp;
+
+            j--;
+        }
+    }
 }
 
 void mergeSort(vector<int>& myVector)

@@ -1,15 +1,20 @@
 #ifndef SORTING_H
 #define SORTING_H
 
+    #include <algorithm>
+    #include <chrono>
+    #include <iomanip>
     #include <iostream>
     #include <vector>
-    #include <algorithm>
 
     using namespace std;
+    using namespace chrono;
+
+    #define chrono_time_point high_resolution_clock::time_point
 
     // Auxilliary functions
     void printVector(const vector<int>& v);
-    void runAllSorts(const vector<int>& v);
+    void runAllSortingAlgorithms(const vector<int>& v);
 
     // Sorting algorithms
     void bubbleSort(vector<int>& v); 
