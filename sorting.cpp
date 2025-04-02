@@ -27,8 +27,18 @@ void runAllSortingAlgorithms(const vector<int>& myVector)
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
 
     dummy = myVector;
+    cout << "Running " << setw(20) << "MERGE SORT...";
+    mergeSort(dummy);
+    cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
+
+    dummy = myVector;
     cout << "Running " << setw(20) << "SELECTION SORT...";
     selectionSort(dummy);
+    cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
+
+    dummy = myVector;
+    cout << "Running " << setw(20) << "STL SORT...";
+    stlSort(dummy);
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
 }
 
@@ -44,9 +54,6 @@ void bubbleSort(vector<int>& myVector)
         {
             if (myVector[j] > myVector[j + 1])
             {
-                // int temp = myVector[j];
-                // myVector[j] = myVector[j + 1];
-                // myVector[j + 1] = temp;
                 swap(myVector[j], myVector[j + 1]);
                 swapped = true;
             }
@@ -69,9 +76,6 @@ void insertionSort(vector<int>& myVector)
 
         while ((j > 0) && (myVector[j - 1] > myVector[j]))
         {
-            // int temp = myVector[j];
-            // myVector[j] = myVector[j - 1];
-            // myVector[j - 1] = temp;
             swap(myVector[j], myVector[j - 1]);
 
             j--;
@@ -79,10 +83,71 @@ void insertionSort(vector<int>& myVector)
     }
 }
 
-// TODO
 void mergeSort(vector<int>& myVector)
 {
+    int length = (int)(myVector.size());
 
+    // A list of length 0 or 1 is trivially sorted.
+    if (length > 1)
+    {
+        vector<int> left;
+        vector<int> right;
+
+        for (int i = 0; i < length; ++i)
+        {
+            if (i < (length / 2))
+            {
+                left.push_back(myVector[i]);
+            }
+            else
+            {
+                right.push_back(myVector[i]);
+            }
+        }
+
+        mergeSort(left);
+        mergeSort(right);
+
+        myVector = merge(left, right);
+    }
+}
+
+vector<int> merge(const vector<int>& left, const vector<int>& right)
+{
+    vector<int> result;
+
+    int leftSize = (int)(left.size());
+    int rightSize = (int)(right.size());
+    int leftIter = 0;
+    int rightIter = 0;
+
+    while ((leftIter < leftSize) && (rightIter < rightSize))
+    {
+        if (left[leftIter] <= right[rightIter])
+        {
+            result.push_back(left[leftIter]);
+            leftIter++;
+        }
+        else
+        {
+            result.push_back(right[rightIter]);
+            rightIter++;
+        }
+    }
+
+    // Empty the left-over list
+    while (leftIter < leftSize)
+    {
+        result.push_back(left[leftIter]);
+        leftIter++;
+    }
+    while (rightIter < rightSize)
+    {
+        result.push_back(right[rightIter]);
+        rightIter++;
+    }
+
+    return result;
 }
 
 // TODO
@@ -97,7 +162,6 @@ void radixSort(vector<int>& myVector)
 
 }
 
-// TODO
 void selectionSort(vector<int>& myVector)
 {
     int length = (int)(myVector.size());
