@@ -44,9 +44,10 @@ void bubbleSort(vector<int>& myVector)
         {
             if (myVector[j] > myVector[j + 1])
             {
-                int temp = myVector[j];
-                myVector[j] = myVector[j + 1];
-                myVector[j + 1] = temp;
+                // int temp = myVector[j];
+                // myVector[j] = myVector[j + 1];
+                // myVector[j + 1] = temp;
+                swap(myVector[j], myVector[j + 1]);
                 swapped = true;
             }
         }
@@ -68,9 +69,10 @@ void insertionSort(vector<int>& myVector)
 
         while ((j > 0) && (myVector[j - 1] > myVector[j]))
         {
-            int temp = myVector[j];
-            myVector[j] = myVector[j - 1];
-            myVector[j - 1] = temp;
+            // int temp = myVector[j];
+            // myVector[j] = myVector[j - 1];
+            // myVector[j - 1] = temp;
+            swap(myVector[j], myVector[j - 1]);
 
             j--;
         }
