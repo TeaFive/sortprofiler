@@ -3,17 +3,18 @@
 
     #include <algorithm>
     #include <chrono>
+    #include <cmath>
     #include <iomanip>
     #include <iostream>
+    #include <random>
     #include <vector>
 
     using namespace std;
     using namespace chrono;
 
-    #define chrono_time_point high_resolution_clock::time_point
-
     // Auxilliary functions
     void printVector(const vector<int>& v);
+    vector<int> generateRandomVector(int N, int min, int max);
     void runAllSortingAlgorithms(const vector<int>& v);
 
     // Sorting algorithms
@@ -36,6 +37,7 @@
     // Quick Sort helper function
     int partition(vector<int>& v, int lo, int hi);
 
+    // Reference: https://www.w3schools.com/dsa/dsa_algo_radixsort.php
     void radixSort(vector<int>& v);
 
     // Reference: https://en.wikipedia.org/wiki/Selection_sort#Implementations
