@@ -17,6 +17,7 @@
     void runAllSortingAlgorithms(const vector<int>& v);
 
     // Sorting algorithms
+    // Note this is the early exit implementation.
     // Reference: https://en.wikipedia.org/wiki/Bubble_sort#Pseudocode_implementation
     void bubbleSort(vector<int>& v); 
 
@@ -29,7 +30,11 @@
     // Merge sort helper function
     vector<int> merge(const vector<int>& left, const vector<int>& right);
 
-    void quickSort(vector<int>& v);
+    // Reference: https://www.w3schools.com/dsa/dsa_algo_quicksort.php
+    void quickSort(vector<int>& v, int lo = 0, int hi = -1);
+
+    // Quick Sort helper function
+    int partition(vector<int>& v, int lo, int hi);
 
     void radixSort(vector<int>& v);
 

@@ -17,6 +17,7 @@ void runAllSortingAlgorithms(const vector<int>& myVector)
     // https://cplusplus.com/reference/chrono/high_resolution_clock/now/
 
     vector<int> dummy = myVector;
+
     cout << "Running " << setw(20) << "BUBBLE SORT...";
     bubbleSort(dummy);
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
@@ -32,6 +33,11 @@ void runAllSortingAlgorithms(const vector<int>& myVector)
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
 
     dummy = myVector;
+    cout << "Running " << setw(20) << "QUICK SORT...";
+    quickSort(dummy);
+    cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
+
+    dummy = myVector;
     cout << "Running " << setw(20) << "SELECTION SORT...";
     selectionSort(dummy);
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
@@ -42,7 +48,6 @@ void runAllSortingAlgorithms(const vector<int>& myVector)
     cout << "\tIs sorted? " << (is_sorted(dummy.begin(), dummy.end()) ? "YES" : "NO") << "\n";
 }
 
-// Early exit implementation
 void bubbleSort(vector<int>& myVector)
 {
     int length = (int)(myVector.size());
@@ -150,10 +155,37 @@ vector<int> merge(const vector<int>& left, const vector<int>& right)
     return result;
 }
 
-// TODO
-void quickSort(vector<int>& myVector)
+void quickSort(vector<int>& myVector, int lo, int hi)
 {
+    if (hi == -1)
+    {
+        hi = ((int)(myVector.size())) - 1;
+    }
 
+    if (lo < hi)
+    {
+        int pivot = partition(myVector, lo, hi);
+        quickSort(myVector, lo, pivot - 1);
+        quickSort(myVector, pivot + 1, hi);
+    }
+}
+
+int partition(vector<int>& myVector, int lo, int hi)
+{
+    int pivot = myVector[hi];
+    int i = lo - 1;
+
+    for (int j = lo; j < hi; ++j)
+    {
+        if (myVector[j] <= pivot)
+        {
+            i++;
+            swap(myVector[i], myVector[j]);
+        }
+    }
+
+    swap(myVector[i + 1], myVector[hi]);
+    return (i + 1);
 }
 
 // TODO
