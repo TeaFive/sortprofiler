@@ -74,21 +74,25 @@ void insertionSort(vector<int>& myVector)
     }
 }
 
+// TODO
 void mergeSort(vector<int>& myVector)
 {
 
 }
 
+// TODO
 void quickSort(vector<int>& myVector)
 {
 
 }
 
+// TODO
 void radixSort(vector<int>& myVector)
 {
 
 }
 
+// TODO
 void selectionSort(vector<int>& v)
 {
 
@@ -96,5 +100,5 @@ void selectionSort(vector<int>& v)
 
 void stlSort(vector<int>& myVector)
 {
-
+    sort(myVector.begin(), myVector.end());
 }
