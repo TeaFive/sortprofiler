@@ -1,6 +1,5 @@
 #include "helpers.h"
 #include "sorting.h"
-
 #include <algorithm>
 #include <chrono>
 #include <iomanip>
