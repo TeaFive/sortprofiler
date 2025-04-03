@@ -1,17 +1,21 @@
 #include "sorting.h"
 #include "helpers.h"
 
+#include <iostream>
+#include <iomanip>
+#include <string>
+
 using namespace std;
 
 int main()
 {
-    int N = 50000;
-    int min = 0;
-    int max = 2147483647;
-
-    vector<int> testVector = generateRandomVector(N, min, max);
-
-    runAllSortingAlgorithms(testVector);
+    cout << string(80, '-') << "\nWelcome to SortProfiler!\n" << string(80, '-')
+         << "\nThis app runs commonly studied sorting algorithms to be profiled.\n\n"
+         << "Select an option below:\n"
+         << " [1] Sorting Benchmark\n"
+         << " [2] Performance Analyzer (TO BE IMPLEMENTED)\n"
+         << " [3] Settings\n"
+         << " [E] Exit program.\n";
     
     return 0;
 }
