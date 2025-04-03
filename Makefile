@@ -3,10 +3,10 @@ CXX := g++
 CXXFLAGS := -Wall -Wextra -O2 -std=c++11
 
 # Source files
-SRC := main.cpp sorting.cpp
+SRC := main.cpp sorting.cpp helpers.cpp
 
 # Header file
-HDR := sorting.h
+HDR := sorting.h helpers.h
 
 # Target executable
 TARGET := main

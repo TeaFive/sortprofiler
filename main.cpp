@@ -1,4 +1,7 @@
 #include "sorting.h"
+#include "helpers.h"
+
+using namespace std;
 
 int main()
 {
