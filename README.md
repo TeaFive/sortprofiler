@@ -23,6 +23,8 @@ This project (SortProfiler) has two main components to it:
 
 The sorting algorithms themselves are largely irrelevant, but they play a substitute role in what may make an app "slow" or "fast." As a proxy, they provide a controlled environment to simulate performance bottlenecks. To determine where slowness may come from, the second part of this project aims to build a stack trace with analytics (e.g. time metrics and function hierarchies) attached to it for interpretation. These statistics aim to highlight areas of an app that are underperforming and should be remedied to improve the user experience.
 
+[☝️ Return to top](#sortprofiler)
+
 ## 🗺️ Roadmap
 At a glance, there are two stages to SortProfiler:
 
@@ -45,8 +47,8 @@ This stage is largely focused on the functionality of the project with some leve
 
 #### 🧭 CLI Navigation Flow Example
 ```mermaid
-graph TD;
-  A[Program Start] ---> B[Main menu prompt];
+graph LR;
+  A[Program Start] -- printMainMenuPrompt() --> B[Main menu prompt];
 
   B -- [1] --> C[Sorting algorithm benchmark];
   B -- [2] --> D[Performance analyzer];
@@ -54,7 +56,7 @@ graph TD;
 
   C -- [1] --> C1[Run selected algorithm];
   C -- [2] --> C2[Change benchmark settings];
-  C -- [R] --> B;
+  C -- [R] printMainMenuPrompt() --> B;
   C -- [E] --> E;
 
   D -- [E] --> E;
@@ -67,6 +69,8 @@ Potential goals (to expand on later):
 - [ ] Create a basic windowed layout with main menu navigation
 - [ ] Display benchmarking results using simple charts (bar or line)
 - [ ] Allow log file selection and analysis
+
+[☝️ Return to top](#sortprofiler)
 
 ## 🧠 Notes for Future Me
 
@@ -101,3 +105,5 @@ My `.cpp` files are likely to get crowded later. Here are some considerations fo
 ### 📝 Reminders
   - Build first, refactor later.
   - One small step at a time!
+
+[☝️ Return to top](#sortprofiler)
