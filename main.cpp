@@ -2,14 +2,20 @@
 #include "sorting.h"
 #include "helpers.h"
 #include <iostream>
-#include <iomanip>
-#include <string>
 
 using namespace std;
 
 int main()
 {
-    printPrompt();
+    // Control variables
+    char selectedOption;
+
+    printMainMenuPrompt();
+    selectedOption = handleMainMenuSelection();
+    cout << "Selected option: " << selectedOption << "\n";
+
+    
+
     
     return 0;
 }
