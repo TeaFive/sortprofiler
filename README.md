@@ -5,6 +5,7 @@
   - [💡 Objective](#-objective)
   - [🗺️ Roadmap](#️-roadmap)
     - [CLI](#cli)
+      - [🧭 CLI Navigation Flow Example](#-cli-navigation-flow-example)
     - [GUI](#gui)
   - [🧠 Notes for Future Me](#-notes-for-future-me)
     - [GUI Options](#gui-options)
@@ -34,13 +35,30 @@ This stage is largely focused on the functionality of the project with some leve
 - [X] Implement sorting algorithms
   -  Keep it simple with several algorithms: [1] Bubble sort [2] Insertion sort [3] Merge sort [4] Quick [5] Radix sort [6] Selection sort [7] STL sort().
 - [X] Welcome the user to the **main menu**
-  - [X] Provide three options: [1] Enter the sorting algorithm benchmark [2] Enter the performance analyzer [3] Exit the program.
+  - [X] Provide three options: [1] Enter the sorting algorithm benchmark [2] Enter the performance analyzer [E] Exit the program.
 - [ ] Sorting algorithm benchmark
   - [ ] Option 1: Run the currently selected sorting algorithm and display (print) time metrics after completion. Return to the benchmark menu (i.e. prompt the user again).
   - [ ] Option 2: Allow the user to change the benchmark's settings. [1] Change the sorting algorithm [2] Change the number of items to sort [3] Turn on/off the creation of performance logs.
   - [ ] Option 3: Return to the main menu.
   - [ ] Option 4: Exit the program.
 - [ ] Performance analyzer (TO-WRITE)
+
+#### 🧭 CLI Navigation Flow Example
+```mermaid
+graph TD;
+  A[Program Start] ---> B[Main menu prompt];
+
+  B -- [1] --> C[Sorting algorithm benchmark];
+  B -- [2] --> D[Performance analyzer];
+  B -- [E] --> E[Program Exit];
+
+  C -- [1] --> C1[Run selected algorithm];
+  C -- [2] --> C2[Change benchmark settings];
+  C -- [R] --> B;
+  C -- [E] --> E;
+
+  D -- [E] --> E;
+```
 
 ### GUI
 Once the CLI implementation is complete, a GUI hopes to resemble a real-world application with a clean, interactable interface.
