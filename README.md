@@ -4,16 +4,16 @@
   - [📚 Table of Contents](#-table-of-contents)
   - [💡 Objective](#-objective)
   - [🗺️ Roadmap](#️-roadmap)
-    - [CLI](#cli)
+    - [🖥️ CLI](#️-cli)
       - [🧭 CLI Navigation Flow Example](#-cli-navigation-flow-example)
-    - [GUI](#gui)
+    - [🖼️ GUI](#️-gui)
   - [🧠 Notes for Future Me](#-notes-for-future-me)
-    - [GUI Options](#gui-options)
-    - [Log Format](#log-format)
-    - [Performance Analyzer Goals](#performance-analyzer-goals)
-    - [Code Organization Ideas](#code-organization-ideas)
-    - [Stretch Goals](#stretch-goals)
-    - [Reminders](#reminders)
+    - [🎨 GUI Options](#-gui-options)
+    - [📜 Log Format](#-log-format)
+    - [📈 Performance Analyzer Goals](#-performance-analyzer-goals)
+    - [🗂️ Code Organization Ideas](#️-code-organization-ideas)
+    - [🚀 Stretch Goals](#-stretch-goals)
+    - [📝 Reminders](#-reminders)
 
 ## 💡 Objective
 This project (SortProfiler) has two main components to it:
@@ -29,7 +29,7 @@ At a glance, there are two stages to SortProfiler:
 1. Command Line Interface (CLI) implementation
 2. GUI Implementation
 
-### CLI
+### 🖥️ CLI
 This stage is largely focused on the functionality of the project with some level of interactability.
 
 - [X] Implement sorting algorithms
@@ -60,7 +60,7 @@ graph TD;
   D -- [E] --> E;
 ```
 
-### GUI
+### 🖼️ GUI
 Once the CLI implementation is complete, a GUI hopes to resemble a real-world application with a clean, interactable interface.
 
 Potential goals (to expand on later):
@@ -70,34 +70,34 @@ Potential goals (to expand on later):
 
 ## 🧠 Notes for Future Me
 
-### GUI Options
+### 🎨 GUI Options
 Remember to start small. Get things working first with a basic layout before focusing on the aesthestics. Here are some considerations:
   - Qt: Full-featured, good for polished apps.
   - ImGui: Fast prototyping, great for dev tools.
 
-### Log Format
+### 📜 Log Format
   - Begin with JSON.
   - Consider moving to SQLite if project interest is still there in the future...
   
-### Performance Analyzer Goals
+### 📈 Performance Analyzer Goals
 1. Parse logs (start with JSON).
 2. Show function hierarchy + time metrics.
 3. Visualize with charts or tables.
 
 
-### Code Organization Ideas
+### 🗂️ Code Organization Ideas
 My `.cpp` files are likely to get crowded later. Here are some considerations for future refactoring:
   - `cli_utils.cpp/.h` – menu functions
   - `sorting.cpp/.h` – algorithms
   - `benchmark.cpp/.h` – timers + logs
   - `analyzer.cpp/.h` – log parsing
 
-### Stretch Goals
+### 🚀 Stretch Goals
   - Load + analyze saved logs
   - Multi-run stats (avg/worst)
   - Algorithm suggestions based on data
   - Add unit tests for major components
 
-### Reminders
+### 📝 Reminders
   - Build first, refactor later.
   - One small step at a time!
