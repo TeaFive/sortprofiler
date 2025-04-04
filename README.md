@@ -47,19 +47,44 @@ This stage is largely focused on the functionality of the project with some leve
 
 #### 🧭 CLI Navigation Flow Example
 ```mermaid
-graph LR;
-  A[Program Start] -- printMainMenuPrompt() --> B[Main menu prompt];
+flowchart TB
+  S[Program Start]
+  S --> |"mainMenu_printMenu()"| MM
 
-  B -- [1] --> C[Sorting algorithm benchmark];
-  B -- [2] --> D[Performance analyzer];
-  B -- [E] --> E[Program Exit];
+  subgraph MM[Main Menu]
+      %% direction TB
+      MM_1["[1]" Sorting Benchmark]
+      MM_2["[2]" Performance Analyzer]
+      MM_E["[E]" Exit program]
+  end
 
-  C -- [1] --> C1[Run selected algorithm];
-  C -- [2] --> C2[Change benchmark settings];
-  C -- [R] printMainMenuPrompt() --> B;
-  C -- [E] --> E;
+  MM_1 --> |"benchmark_printMenu()"| SB
+  MM_2 --> PA
+  MM_E --> E
 
-  D -- [E] --> E;
+  subgraph SB[Sorting Benchmark]
+    %% direction TB
+    SB_1["[1]" Run benchmark]
+    SB_2["[2]" Configure settings]
+    SB_E["[E]" Exit benchmark]
+
+    subgraph SB_BS[Benchmark Settings]
+      direction LR
+      SB_2.1["[2.1]" Change sorting algorithm]
+      SB_2.2["[2.2]" Change number of elements]
+      SB_2.3["[2.3]" Toggle log creation]
+      SB_2.E["[2.E]" Exit benchmark settings]
+    end
+  end
+
+  %% SB_E --> Main_Menu
+  SB_2 --> |"benchmark_printSettings()"| SB_BS
+
+  subgraph PA[Performance Analyzer]
+    PA_1["[1]" PLACEHOLDER TO MODIFY LATER]
+  end
+
+  E[Program Exit]
 ```
 
 ### 🖼️ GUI
@@ -90,11 +115,12 @@ Remember to start small. Get things working first with a basic layout before foc
 
 
 ### 🗂️ Code Organization Ideas
-My `.cpp` files are likely to get crowded later. Here are some considerations for future refactoring:
+- My `.cpp` files are likely to get crowded later. Here are some considerations for future refactoring:
   - `cli_utils.cpp/.h` – menu functions
   - `sorting.cpp/.h` – algorithms
   - `benchmark.cpp/.h` – timers + logs
   - `analyzer.cpp/.h` – log parsing
+- [CLI] Each "page" share similar functionalities like printing the menu page... Consider namespaces? For example, `mainMenu::printMenu()` and `benchmark::printMenu()`.
 
 ### 🚀 Stretch Goals
   - Load + analyze saved logs
