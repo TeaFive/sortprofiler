@@ -65,26 +65,39 @@ flowchart TB
   subgraph SB[Sorting Benchmark]
     %% direction TB
     SB_1["[1]" Run benchmark]
+      SB_1.1["benchmark_runTest()"]
     SB_2["[2]" Configure settings]
     SB_E["[E]" Exit benchmark]
 
     subgraph SB_BS[Benchmark Settings]
       direction LR
       SB_2.1["[2.1]" Change sorting algorithm]
+        SB_2.1.1["benchmark_settingChangeAlgorithm()"]
       SB_2.2["[2.2]" Change number of elements]
+        SB_2.2.1["benchmark_settingChangeNumber()"]
       SB_2.3["[2.3]" Toggle log creation]
+        SB_2.3.1["benchmark_settingToggleLogs()"]
       SB_2.E["[2.E]" Exit benchmark settings]
+        SB_2.E.1["benchmark_startSettings() terminates"]
     end
   end
 
-  SB_E --> |"mainMenu_printMenu()"| MM
-  SB_2 --> |"benchmark_printSettings()"| SB_BS
+  SB_1 --> SB_1.1
+  SB_2 --> |"benchmark_startSettings()"| SB_BS
+    SB_2.1 --> SB_2.1.1
+    SB_2.2 --> SB_2.2.1
+    SB_2.3 --> SB_2.3.1
+    SB_2.E --> SB_2.E.1
+  SB_E --> |"benchmark_startProgram() terminates"| MM
 
   subgraph PA[Performance Analyzer]
     PA_1["[1]" PLACEHOLDER TO MODIFY LATER]
   end
 
   E[Program Exit]
+
+  classDef menuOption fill:#222d4d
+  class MM_1,MM_2,MM_E,SB_1,SB_2,SB_2.1,SB_2.2,SB_2.3,SB_2.E,SB_E menuOption
 ```
 
 ### 🖼️ GUI
