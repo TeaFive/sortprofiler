@@ -1,4 +1,5 @@
 #include "cli_utils.h"
+#include <chrono>
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -86,7 +87,10 @@ void benchmark_startProgram()
 void benchmark_printMenu()
 {
     printHeader(BENCHMARK_HEADER);
-    cout << "(To display current settings.)\n\n"
+    cout << "Current benchmark settings:\n"
+         << "\t- Algorithm: BUBBLE\n" 
+         << "\t- Number of items to sort: 10000\n"
+         << "\t- Create logs? No\n\n"
          << "Select an option below:\n"
          << " [1] Run Benchmark (DOES NOTHING)\n"
          << " [2] Configure settings (DOES NOTHING)\n"
@@ -118,6 +122,11 @@ char benchmark_getInput()
     }
     
     return input;
+}
+
+void benchmark_runTest()
+{
+
 }
 
 // Performance analyzer utility

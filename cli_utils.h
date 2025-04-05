@@ -25,6 +25,8 @@ void benchmark_startProgram();
 void benchmark_printMenu();
 char benchmark_getInput();
 
+void benchmark_runTest();
+
 // Performance analyzer utility
 void analyzer_startProgram();
 void analyzer_printMenu();
