@@ -42,8 +42,8 @@ This stage is largely focused on the functionality of the project with some leve
   - [ ] Option 1: Run the currently selected sorting algorithm and display (print) time metrics after completion. Return to the benchmark menu (i.e. prompt the user again).
   - [ ] Option 2: Allow the user to change the benchmark's settings. [1] Change the sorting algorithm [2] Change the number of items to sort [3] Turn on/off the creation of performance logs.
   - [ ] Option 3: Return to the main menu.
-  - [ ] Option 4: Exit the program.
 - [ ] Performance analyzer (TO-WRITE)
+  - [ ] Option ?: Return to the main menu.
 
 #### 🧭 CLI Navigation Flow Example
 ```mermaid
@@ -59,8 +59,8 @@ flowchart TB
   end
 
   MM_1 --> |"benchmark_startProgram()"| SB
-  MM_2 --> PA
-  MM_E --> E
+  MM_2 --> |"analyzer_startProgram()"| PA
+  MM_E --> |"isRunning = FALSE"| E
 
   subgraph SB[Sorting Benchmark]
     %% direction TB
