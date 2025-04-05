@@ -58,7 +58,7 @@ flowchart TB
       MM_E["[E]" Exit program]
   end
 
-  MM_1 --> |"benchmark_printMenu()"| SB
+  MM_1 --> |"benchmark_startProgram()"| SB
   MM_2 --> PA
   MM_E --> E
 
@@ -77,7 +77,7 @@ flowchart TB
     end
   end
 
-  %% SB_E --> Main_Menu
+  SB_E --> |"mainMenu_printMenu()"| MM
   SB_2 --> |"benchmark_printSettings()"| SB_BS
 
   subgraph PA[Performance Analyzer]
@@ -121,6 +121,7 @@ Remember to start small. Get things working first with a basic layout before foc
   - `benchmark.cpp/.h` – timers + logs
   - `analyzer.cpp/.h` – log parsing
 - [CLI] Each "page" share similar functionalities like printing the menu page... Consider namespaces? For example, `mainMenu::printMenu()` and `benchmark::printMenu()`.
+  - Many functions share the same body (i.e. repeated code). Condensing them is a good consideration for the future. See the top comment in `cli_utils.h` for more detail.
 
 ### 🚀 Stretch Goals
   - Load + analyze saved logs
