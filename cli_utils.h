@@ -21,11 +21,17 @@ void mainMenu_printMenu();
 char mainMenu_getInput();
 
 // Sorting benchmark utility
+struct Results
+{
+    bool hasContent;
+    double time;
+};
+
 void benchmark_startProgram();
 void benchmark_printMenu();
 char benchmark_getInput();
 
-void benchmark_runTest();
+void benchmark_runTest(struct Results& result);
 
 // Performance analyzer utility
 void analyzer_startProgram();

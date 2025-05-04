@@ -1,10 +1,15 @@
 #include "cli_utils.h"
+#include "sorting.h"
+#include <algorithm>
 #include <chrono>
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <vector>
 
 using namespace std;
+
+typedef struct Results Results;
 
 const string MAIN_MENU_HEADER = "SortProfiler: Main Menu";
 const string BENCHMARK_HEADER = "SortProfiler: Sorting Algorithm Benchmark";
@@ -29,7 +34,7 @@ void mainMenu_printMenu()
 
 char mainMenu_getInput()
 {
-    char input;
+    char input = 0;
 
     cin >> input;
     while (true)
@@ -58,6 +63,7 @@ char mainMenu_getInput()
 void benchmark_startProgram()
 {
     // Control variables
+    Results benchmarkResults = { false, 0 };
     bool isBenchmarkRunning = true;
     char input = 0;
 
@@ -66,11 +72,18 @@ void benchmark_startProgram()
         system("cls");
 
         benchmark_printMenu();
+        if (benchmarkResults.hasContent)
+        {
+            cout << "-----------------------------------\n" 
+                 << "Time taken: " << benchmarkResults.time << " seconds\n"
+                 << "-----------------------------------\n";
+        }
+
         input = benchmark_getInput();
 
         if (input == '1')
         {
-            cout << "You ran the benchmark!\n";
+            benchmark_runTest(benchmarkResults);
         }
         else if (input == '2')
         {
@@ -124,9 +137,21 @@ char benchmark_getInput()
     return input;
 }
 
-void benchmark_runTest()
+void benchmark_runTest(Results& result)
 {
+    // Dummy value of 10000. To be changed by user if desired later
+    vector<int> v(10000);
+    generate(v.begin(), v.end(), rand);
 
+    // Default dummy sort. To be changed by user if desired later.
+    chrono::high_resolution_clock::time_point start = chrono::high_resolution_clock::now();
+    bubbleSort(v);
+    chrono::high_resolution_clock::time_point end = chrono::high_resolution_clock::now();
+
+    chrono::duration<double> time_span = chrono::duration_cast<chrono::duration<double>>(end - start);
+    
+    result.time = time_span.count();
+    result.hasContent = true;
 }
 
 // Performance analyzer utility
