@@ -9,8 +9,7 @@
     - [🖼️ GUI](#️-gui)
   - [🧠 Notes for Future Me](#-notes-for-future-me)
     - [🎨 GUI Options](#-gui-options)
-    - [📜 Log Format](#-log-format)
-    - [📈 Performance Analyzer Goals](#-performance-analyzer-goals)
+    - [📜 Logs and Analysis Tool](#-logs-and-analysis-tool)
     - [🗂️ Code Organization Ideas](#️-code-organization-ideas)
     - [🚀 Stretch Goals](#-stretch-goals)
     - [📝 Reminders](#-reminders)
@@ -21,15 +20,17 @@ This project (SortProfiler) has two main components to it:
 1. Commonly studied sorting algorithms
 2. Application performance analysis 
 
-The sorting algorithms themselves are largely irrelevant, but they play a substitute role in what may make an app "slow" or "fast." As a proxy, they provide a controlled environment to simulate performance bottlenecks. To determine where slowness may come from, the second part of this project aims to build a stack trace with analytics (e.g. time metrics and function hierarchies) attached to it for interpretation. These statistics aim to highlight areas of an app that are underperforming and should be remedied to improve the user experience.
+The sorting algorithms serve as a controlled substitute for performance-heavy tasks. They simulate app performance bottlenecks in a predictable and measurable environment. To determine where slowness may come from, the second part of this project aims to build a stack trace with analytics (e.g. time metrics and function hierarchies) attached to it for interpretation. These statistics aim to highlight areas of an app that are underperforming and should be remedied to improve the user experience.
+
+
 
 [☝️ Return to top](#sortprofiler)
 
 ## 🗺️ Roadmap
-At a glance, there are two stages to SortProfiler:
+At a glance, there are two development stages to SortProfiler:
 
-1. Command Line Interface (CLI) implementation
-2. GUI Implementation
+1. Command Line Interface (CLI): functionality focused
+2. GUI: visual and interaction focused
 
 ### 🖥️ CLI
 This stage is largely focused on the functionality of the project with some level of interactability.
@@ -42,10 +43,15 @@ This stage is largely focused on the functionality of the project with some leve
   - [ ] Option 1: Run the currently selected sorting algorithm and display (print) time metrics after completion. Return to the benchmark menu (i.e. prompt the user again).
   - [ ] Option 2: Allow the user to change the benchmark's settings. [1] Change the sorting algorithm [2] Change the number of items to sort [3] Turn on/off the creation of performance logs.
   - [ ] Option 3: Return to the main menu.
-- [ ] Performance analyzer (TO-WRITE)
-  - [ ] Option ?: Return to the main menu.
+- [ ] Performance analyzer (ideas laid out below)
+  - Choose log file (or display error if none exist)
+  - Run chosen log file
+    - If log cannot be read, display an error.
+  - Display metrics
+    - Possibly create graphs for visualization (low priority)
 
 #### 🧭 CLI Navigation Flow Example
+This is an example flow that was made to lay out a basic idea of the moving parts. The diagram can and should be formalized and cleaned up in the future (likely with `Draw.io`)
 ```mermaid
 flowchart TB
   S[Program Start]
@@ -91,8 +97,12 @@ flowchart TB
   SB_E --> |"benchmark_startProgram() terminates"| MM
 
   subgraph PA[Performance Analyzer]
-    PA_1["[1]" PLACEHOLDER TO MODIFY LATER]
+    PA_1["[1]" Choose log file]
+    PA_2["[2]" Run chosen log file]
+    PA_3["[E]" Return to main menu]
   end
+
+  PA_3 --> MM
 
   E[Program Exit]
 
@@ -101,7 +111,7 @@ flowchart TB
 ```
 
 ### 🖼️ GUI
-Once the CLI implementation is complete, a GUI hopes to resemble a real-world application with a clean, interactable interface.
+A GUI may be considered after the CLI is complete, primarily as a visual learning extension rather than a core goal.
 
 Potential goals (to expand on later):
 - [ ] Create a basic windowed layout with main menu navigation
@@ -113,19 +123,15 @@ Potential goals (to expand on later):
 ## 🧠 Notes for Future Me
 
 ### 🎨 GUI Options
-Remember to start small. Get things working first with a basic layout before focusing on the aesthestics. Here are some considerations:
-  - Qt: Full-featured, good for polished apps.
-  - ImGui: Fast prototyping, great for dev tools.
+While the functionality of the application comes before aesthetics, some considerations are:
+  - ImGui for fast prototyping
+  - Qt for polished apps.
 
-### 📜 Log Format
+### 📜 Logs and Analysis Tool
   - Begin with JSON.
   - Consider moving to SQLite if project interest is still there in the future...
-  
-### 📈 Performance Analyzer Goals
-1. Parse logs (start with JSON).
-2. Show function hierarchy + time metrics.
-3. Visualize with charts or tables.
-
+  - Show function hierarchy + time metrics.
+  - Visualize with charts or tables.
 
 ### 🗂️ Code Organization Ideas
 - My `.cpp` files are likely to get crowded later. Here are some considerations for future refactoring:
@@ -137,13 +143,12 @@ Remember to start small. Get things working first with a basic layout before foc
   - Many functions share the same body (i.e. repeated code). Condensing them is a good consideration for the future. See the top comment in `cli_utils.h` for more detail.
 
 ### 🚀 Stretch Goals
-  - Load + analyze saved logs
   - Multi-run stats (avg/worst)
   - Algorithm suggestions based on data
   - Add unit tests for major components
 
 ### 📝 Reminders
-  - Build first, refactor later.
+  - Focus on building first, then clean up once patterns emerge.
   - One small step at a time!
 
 [☝️ Return to top](#sortprofiler)
