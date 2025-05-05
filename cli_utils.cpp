@@ -2,6 +2,7 @@
 #include "sorting.h"
 #include <algorithm>
 #include <chrono>
+#include <fstream>
 #include <iostream>
 #include <iomanip>
 #include <string>
@@ -103,7 +104,7 @@ void benchmark_printMenu()
     cout << "Current benchmark settings:\n"
          << "\t- Algorithm: BUBBLE\n" 
          << "\t- Number of items to sort: 10000\n"
-         << "\t- Create logs? No\n\n"
+         << "\t- Create logs? Yes\n\n"
          << "Select an option below:\n"
          << " [1] Run Benchmark (DOES NOTHING)\n"
          << " [2] Configure settings (DOES NOTHING)\n"
@@ -152,6 +153,26 @@ void benchmark_runTest(Results& result)
     
     result.time = time_span.count();
     result.hasContent = true;
+
+    benchmark_createLog(result);
+}
+
+void benchmark_createLog(const Results& result)
+{
+    ofstream output("./log.txt");
+
+    if (output.is_open())
+    {
+        cout << "Creation success\n";
+        output << "[Sorting: Bubble Sort]\n" 
+               << "Time taken: " << result.time << "s\n"
+               << "Elements sorted: 10000\n"; // Temp hardcoded: to be changed
+        output.close();
+    }
+    else 
+    { 
+        cout << "Failed to open file.\n";
+    }
 }
 
 // Performance analyzer utility

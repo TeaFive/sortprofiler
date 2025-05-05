@@ -1,0 +1,3 @@
+[Sorting: Bubble Sort]
+Time taken: 0.159175s
+Elements sorted: 10000

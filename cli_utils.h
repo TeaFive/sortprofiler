@@ -10,7 +10,7 @@
  *  clarity. In the future, we might want to condense these to one or two
  *  functions knows how to handle the program based on context.abort
  * 
- *  This is also on the "notes to future me.
+ *  This is also on "notes to future me."
  */
 
 // All purpose utility
@@ -30,8 +30,8 @@ struct Results
 void benchmark_startProgram();
 void benchmark_printMenu();
 char benchmark_getInput();
-
 void benchmark_runTest(struct Results& result);
+void benchmark_createLog(const struct Results& result);
 
 // Performance analyzer utility
 void analyzer_startProgram();
